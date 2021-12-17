@@ -6,7 +6,7 @@ StarView
 
 [![Discord](https://img.shields.io/discord/652515194572111872)](https://img.shields.io/discord/652515194572111872)
 
-Simple custom view and drawable that draws an n-point star for Android.
+Simple custom view that draws an n-point star for Android.
 
 ## Features
 
@@ -18,8 +18,6 @@ Simple custom view and drawable that draws an n-point star for Android.
 ## Usage
 
 ## Customization Points
-
-###
 
 ## Building
 
