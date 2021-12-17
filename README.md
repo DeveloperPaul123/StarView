@@ -46,7 +46,7 @@ dependencies {
 
 ## Usage
 
-Simply add the `StarView` to your layout `xml`:
+Add the `StarView` to your layout `xml`:
 
 ```xml
 <com.developerpaul123.starview.StarView
@@ -60,11 +60,18 @@ Simply add the `StarView` to your layout `xml`:
 
 Other available attributes:
 
-:construction:
+| Attribute | Value Type(s) | Description |
+|:---------:|:-------------:|:------------|
+|`fillDirection`|`StarView.FillDirection`|Control what direction the star is filled from.|
+|`fillPercentage`| `float`, clamped to `0.0` -> `1.0` | Control the fill percentage. |
+|`numberOfPoints`| `int`, minimum of 3 | Control the number of points in the star. |
+|`outlineThickness` | `float` | Control the outline thickness. |
+|`starColor` | `Color` | The fill color of the star. |
+|`starOutlineColor` | `Color` | The outline color of the star. |
+|`starBackgroundColor` | `Color` | The background color of the star. Only visible when not filled. |
+|`starCornerRadius` | `float` | The corner radius for the points of the star. |
 
-## Building
-
-:construction:
+All of the above attributes can be controlled via `XML` and `Kotlin`.
 
 ## Contributing
 
