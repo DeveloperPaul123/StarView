@@ -71,7 +71,7 @@ Other available attributes:
 |`starBackgroundColor` | `Color` | The background color of the star. Only visible when not filled. |
 |`starCornerRadius` | `float` | The corner radius for the points of the star. |
 
-All of the above attributes can be controlled via `XML` and `Kotlin`.
+All of the above attributes can be controlled via `XML` and `Kotlin`. See the demo application for more options and how they affect the view.
 
 ## Contributing
 
