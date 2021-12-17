@@ -1,8 +1,6 @@
 package com.developerpaul123.starview.engine
 
 import android.graphics.Path
-import android.graphics.PointF
-import android.util.Log
 import kotlin.math.PI
 import kotlin.math.cos
 import kotlin.math.sin
@@ -41,7 +39,6 @@ class StarEngine {
                     path.moveTo(x.toFloat(), y.toFloat())
                     continue
                 }
-//                path.addCircle(x.toFloat(), y.toFloat(), Math.pow(i.toDouble() + 1.0, 2.0).toFloat(), Path.Direction.CW)
                 path.lineTo(x.toFloat(), y.toFloat())
             }
 

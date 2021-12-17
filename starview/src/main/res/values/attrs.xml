@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StarView">
+
+        <attr name="fillDirection" format="enum">
+            <enum name="leftToRight" value="0"/>
+            <enum name="rightToLeft" value="1"/>
+            <enum name="topToBottom" value="2"/>
+            <enum name="bottomToTop" value="3"/>
+        </attr>
+        <attr name="fillPercentage" format="float" />
+        <attr name="numberOfPoints" format="integer"/>
+        <attr name="outlineThickness" format="float"/>
+        <attr name="starColor" format="color"/>
+        <attr name="starOutlineColor" format="color"/>
+        <attr name="starBackgroundColor" format="color"/>
+    </declare-styleable>
+</resources>
