@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/pointsSliderLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/numberOfPointsSlider"
+        android:text="@string/number_of_points" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/numberOfPointsSlider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:valueFrom="3"
+        android:valueTo="13"
+        android:value="4"
+        android:stepSize="1"/>
+
+    <TextView
+        android:id="@+id/cornerRadiusSliderLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/cornerRadiusSlider"
+        android:text="@string/corner_radius" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/cornerRadiusSlider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:valueFrom="10"
+        android:valueTo="80"
+        android:value="10"
+        android:stepSize="1"/>
+
+    <TextView
+        android:id="@+id/fillPercentageSliderLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:labelFor="@id/fillPercentageSlider"
+        android:text="@string/fill_percentage" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/fillPercentageSlider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:valueFrom="0"
+        android:valueTo="100"
+        android:value="50"
+        android:stepSize="1"/>
+
+    <com.developerpaul123.starview.StarView
+        android:id="@+id/starView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:outlineThickness="10.0"
+        app:fillPercentage="0.6"
+        app:fillDirection="topToBottom" />
+
+</LinearLayout>

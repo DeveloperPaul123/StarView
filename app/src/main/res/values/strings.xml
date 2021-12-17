@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">StarView</string>
+    <string name="number_of_points">Number of Points</string>
+    <string name="title_activity_star_view">Star View Demo</string>
+    <string name="corner_radius">Corner Radius</string>
+    <string name="fill_percentage">Fill Percentage</string>
 </resources>
