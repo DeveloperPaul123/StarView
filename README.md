@@ -1,25 +1,70 @@
-<h1 align="center">
-StarView
-</h1>
+<h1 align="center"> StarView </h1>
 
-[![say thanks](https://img.shields.io/badge/Say%20Thanks-👍-1EAEDB.svg)](https://github.com/DeveloperPaul123/StarView/stargazers)
+<p align="center">
+:star2: Simple custom view that draws an n-point star for Android.
+</p>
 
-[![Discord](https://img.shields.io/discord/652515194572111872)](https://img.shields.io/discord/652515194572111872)
+<p align="center">
+    <a href="https://github.com/DeveloperPaul123/StarView/stargazers"><img alt="Say Thanks" src="https://img.shields.io/badge/Say%20Thanks-👍-1EAEDB.svg"/></a>
+    <a href="https://img.shields.io/discord/652515194572111872"><img alt="Discord" src="https://img.shields.io/discord/652515194572111872"/></a><br>
+</p>
 
-Simple custom view that draws an n-point star for Android.
+<p align="center">
+    <img src="./images/device-2021-12-17-144341.png" width="32%"/>
+    <img src="./images/device-2021-12-17-144450.png" width="32%"/>
+</p>
 
 ## Features
 
-* Draws any n-point star
+* Draw any n-point star
 * Configurable colors
+  * Supports background color, outline color and fill color
 * Supports curved corners with controllable corner radius
-* Fillable
+* Control fill amount and direction
+
+## Include in your project
+
+### Gradle
+
+Add the following to your root `build.gradle` if not there already.
+
+```gradle
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+```
+
+Then add the dependency to your **module's** `build.gradle` file:
+
+```gradle
+dependencies {
+    implementation "io.github.developerpaul123:star-view:<version>"
+}
+```
 
 ## Usage
 
-## Customization Points
+Simply add the `StarView` to your layout `xml`:
+
+```xml
+<com.developerpaul123.starview.StarView
+            android:id="@+id/starView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="350dp"
+            app:fillPercentage="0.5"
+            app:outlineThickness="4.0" />
+```
+
+Other available attributes:
+
+:construction:
 
 ## Building
+
+:construction:
 
 ## Contributing
 
@@ -32,4 +77,4 @@ The project is licensed under the MIT license. See [LICENSE](LICENSE) for more d
 ## Author
 
 | [<img src="https://avatars0.githubusercontent.com/u/6591180?s=460&v=4" width="100"><br><sub>@DeveloperPaul123</sub>](https://github.com/DeveloperPaul123) |
-|:----:|
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------: |
