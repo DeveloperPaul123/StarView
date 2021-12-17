@@ -1,66 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/pointsSliderLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:labelFor="@id/numberOfPointsSlider"
-        android:text="@string/number_of_points" />
-
-    <com.google.android.material.slider.Slider
-        android:id="@+id/numberOfPointsSlider"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:valueFrom="3"
-        android:valueTo="13"
-        android:value="4"
-        android:stepSize="1"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/cornerRadiusSliderLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:labelFor="@id/cornerRadiusSlider"
-        android:text="@string/corner_radius" />
+        <com.developerpaul123.starview.StarView
+            android:id="@+id/starView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="350dp"
+            app:fillPercentage="0.5"
+            app:outlineThickness="4.0" />
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/cornerRadiusSlider"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:valueFrom="10"
-        android:valueTo="80"
-        android:value="10"
-        android:stepSize="1"/>
+        <TextView
+            android:id="@+id/pointsSliderLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/numberOfPointsSlider"
+            android:text="@string/number_of_points" />
 
-    <TextView
-        android:id="@+id/fillPercentageSliderLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:labelFor="@id/fillPercentageSlider"
-        android:text="@string/fill_percentage" />
+        <com.google.android.material.slider.Slider
+            android:id="@+id/numberOfPointsSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stepSize="1"
+            android:value="4"
+            android:valueFrom="3"
+            android:valueTo="17" />
 
-    <com.google.android.material.slider.Slider
-        android:id="@+id/fillPercentageSlider"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:valueFrom="0"
-        android:valueTo="100"
-        android:value="50"
-        android:stepSize="1"/>
+        <TextView
+            android:id="@+id/cornerRadiusSliderLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/cornerRadiusSlider"
+            android:text="@string/corner_radius" />
 
-    <com.developerpaul123.starview.StarView
-        android:id="@+id/starView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:outlineThickness="10.0"
-        app:fillPercentage="0.6"
-        app:fillDirection="topToBottom" />
+        <com.google.android.material.slider.Slider
+            android:id="@+id/cornerRadiusSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stepSize="1"
+            android:value="10"
+            android:valueFrom="10"
+            android:valueTo="80" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/fillPercentageSliderLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/fillPercentageSlider"
+            android:text="@string/fill_percentage" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/fillPercentageSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stepSize="1"
+            android:value="50"
+            android:valueFrom="0"
+            android:valueTo="100" />
+
+        <TextView
+            android:id="@+id/outlineThicknessSliderLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/outlineThicknessSlider"
+            android:text="@string/outline_thickness" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/outlineThicknessSlider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stepSize="1"
+            android:value="4"
+            android:valueFrom="1"
+            android:valueTo="50" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="3"
+            android:useDefaultMargins="true">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_columnWeight="1"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:text="@string/fill_color"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_columnWeight="1"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:text="@string/outline_color"/>
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_columnWeight="1"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:text="@string/background_color"/>
+
+            <com.skydoves.colorpickerview.AlphaTileView
+                android:id="@+id/starFillColorTileView"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:layout_gravity="center"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:tileSize="20"/>
+
+            <com.skydoves.colorpickerview.AlphaTileView
+                android:id="@+id/starOutlineColorTileView"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_gravity="center"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:tileSize="20"/>
+
+            <com.skydoves.colorpickerview.AlphaTileView
+                android:id="@+id/starBackgroundColorTileView"
+                android:layout_row="1"
+                android:layout_column="2"
+                android:layout_gravity="center"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:tileSize="20"/>
+        </GridLayout>
+
+        <RadioGroup
+            android:id="@+id/fillDirectionRadioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal">
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/ltrRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="L to R"/>
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/rtlRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R to L"/>
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/ttbRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Top to Bot."/>
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/bttRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bot. to Top"/>
+        </RadioGroup>
+
+    </LinearLayout>
+</ScrollView>

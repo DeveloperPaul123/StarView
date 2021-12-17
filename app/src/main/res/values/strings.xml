@@ -4,4 +4,8 @@
     <string name="title_activity_star_view">Star View Demo</string>
     <string name="corner_radius">Corner Radius</string>
     <string name="fill_percentage">Fill Percentage</string>
+    <string name="fill_color">Fill Color</string>
+    <string name="outline_color">Outline Color</string>
+    <string name="background_color">Background Color</string>
+    <string name="outline_thickness">Outline Thickness</string>
 </resources>
