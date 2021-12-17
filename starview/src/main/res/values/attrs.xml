@@ -14,5 +14,6 @@
         <attr name="starColor" format="color"/>
         <attr name="starOutlineColor" format="color"/>
         <attr name="starBackgroundColor" format="color"/>
+        <attr name="starCornerRadius" format="float"/>
     </declare-styleable>
 </resources>

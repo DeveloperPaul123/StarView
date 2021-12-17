@@ -50,7 +50,7 @@ class StarView @JvmOverloads constructor(
     var starBackgroundColor = Color.WHITE
         set(value) {
             field = value
-            backgroundPaint.color = value
+            starBackgroundPaint.color = value
             invalidate()
         }
 
@@ -60,6 +60,7 @@ class StarView @JvmOverloads constructor(
     var outlineThickness = 4f
         set(value) {
             field = value
+            starOutlinePaint.strokeWidth = value
             invalidate()
         }
 
@@ -69,6 +70,7 @@ class StarView @JvmOverloads constructor(
     var numberOfPoints = 5
         set(value) {
             field = value
+            computeStarPath()
             invalidate()
         }
 
@@ -98,16 +100,24 @@ class StarView @JvmOverloads constructor(
             field = value
             starPaint.pathEffect = CornerPathEffect(cornerRadius)
             starOutlinePaint.pathEffect = CornerPathEffect(cornerRadius)
-            backgroundPaint.pathEffect = CornerPathEffect(cornerRadius)
+            starBackgroundPaint.pathEffect = CornerPathEffect(cornerRadius)
             invalidate()
         }
 
     private lateinit var starBitmap: Bitmap
-    private lateinit var backgroundBitmap: Bitmap
+    private lateinit var starBackgroundFillBitmap: Bitmap
     private lateinit var starCanvas: Canvas
-    private lateinit var backgroundCanvas: Canvas
+    private lateinit var starBackgroundFillCanvas: Canvas
+    private lateinit var starPath: Path
+    private val starPathBounds = RectF()
+
+    /// @brief Rect used for star fill
     private val fillRect = RectF()
+
+    /// @brief paint for bitmaps only
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+    /// @brief Star fill paint
     private val starPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         style = Paint.Style.FILL_AND_STROKE
         strokeCap = Paint.Cap.ROUND
@@ -124,8 +134,8 @@ class StarView @JvmOverloads constructor(
         pathEffect = CornerPathEffect(cornerRadius)
     }
 
-    private val backgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        style = Paint.Style.FILL_AND_STROKE
+    private val starBackgroundPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        style = Paint.Style.FILL
         strokeCap = Paint.Cap.ROUND
         color = starBackgroundColor
         pathEffect = CornerPathEffect(cornerRadius)
@@ -146,7 +156,7 @@ class StarView @JvmOverloads constructor(
                     FillDirection.LeftToRight.ordinal
                 )
                 fillDirection = FillDirection.values()[fillDirectionIndex]
-                fillPercentage = getFloat(R.styleable.StarView_fillPercentage, 1.0f)
+                fillPercentage = getFloat(R.styleable.StarView_fillPercentage, 0.5f)
 
                 starColor = getColor(R.styleable.StarView_starColor, Color.rgb(252, 202, 52))
                 starBackgroundColor =
@@ -160,38 +170,45 @@ class StarView @JvmOverloads constructor(
         }
     }
 
+    private fun computeStarPath() {
+        starPath = getStarPath()
+        starPath.computeBounds(starPathBounds, true)
+    }
+
     private fun createBitmapResources() {
         if (width > 0 && height > 0) {
             starBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-            backgroundBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+            starBackgroundFillBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
         } else {
             starBitmap = Bitmap.createBitmap(20, 20, Bitmap.Config.ARGB_8888)
-            backgroundBitmap = Bitmap.createBitmap(20, 20, Bitmap.Config.ARGB_8888)
+            starBackgroundFillBitmap = Bitmap.createBitmap(20, 20, Bitmap.Config.ARGB_8888)
         }
 
         starCanvas = Canvas(starBitmap)
-        backgroundCanvas = Canvas(backgroundBitmap)
+        starBackgroundFillCanvas = Canvas(starBackgroundFillBitmap)
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
         createBitmapResources()
+        computeStarPath()
     }
 
     override fun draw(canvas: Canvas?) {
         super.draw(canvas)
 
-        // draw the star (background)
-        val starPath = getStarPath()
-        drawStarBitmapBackground(backgroundPaint, starPath)
+        // draw the background color
+        canvas?.drawPath(starPath, starBackgroundPaint)
 
-        val bounds = RectF()
-        starPath.computeBounds(bounds, true)
+        // draw the star (background)
+        drawStarBitmapBackground(starPaint, starPath)
+
+        starPath.computeBounds(starPathBounds, true)
         // draw the fill
-        drawStarFill(starPaint, bounds)
+        drawStarFill(starPaint, starPathBounds)
 
         // paint the bitmaps as masks
-        canvas?.drawBitmap(backgroundBitmap, 0f, 0f, paint)
+        canvas?.drawBitmap(starBackgroundFillBitmap, 0f, 0f, paint)
         paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
         canvas?.drawBitmap(starBitmap, 0f, 0f, paint)
         paint.xfermode = null
@@ -211,11 +228,11 @@ class StarView @JvmOverloads constructor(
         }
     }
 
-    private fun drawStarFill(paint: Paint, pathBounds: RectF) {
-        if (this::backgroundCanvas.isInitialized) {
-            backgroundCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
-            val width = backgroundBitmap.width.toFloat()
-            val height = backgroundBitmap.height.toFloat()
+    private fun drawStarFill(fillPaint: Paint, pathBounds: RectF) {
+        if (this::starBackgroundFillCanvas.isInitialized) {
+            starBackgroundFillCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR)
+            val width = starBackgroundFillBitmap.width.toFloat()
+            val height = starBackgroundFillBitmap.height.toFloat()
 
             val isWidthDirection =
                 fillDirection == FillDirection.LeftToRight || fillDirection == FillDirection.RightToLeft
@@ -242,9 +259,9 @@ class StarView @JvmOverloads constructor(
                 }
             }
 
-            backgroundCanvas.drawRect(
+            starBackgroundFillCanvas.drawRect(
                 fillRect,
-                paint
+                fillPaint
             )
         }
     }
