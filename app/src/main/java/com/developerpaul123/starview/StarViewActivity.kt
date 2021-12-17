@@ -8,7 +8,7 @@ import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 
 class StarViewActivity : AppCompatActivity() {
-    private lateinit var viewBinding: ActivityStarViewBinding;
+    private lateinit var viewBinding: ActivityStarViewBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,7 +17,7 @@ class StarViewActivity : AppCompatActivity() {
         setContentView(view)
 
         viewBinding.numberOfPointsSlider.addOnChangeListener { _, value, _ ->
-            viewBinding.starView.numberOfPoints = value.toInt();
+            viewBinding.starView.numberOfPoints = value.toInt()
         }
 
         viewBinding.cornerRadiusSlider.addOnChangeListener { _, value, _ ->
@@ -29,7 +29,7 @@ class StarViewActivity : AppCompatActivity() {
         }
 
         viewBinding.outlineThicknessSlider.addOnChangeListener { _, value, _ ->
-            viewBinding.starView.outlineThickness = value;
+            viewBinding.starView.outlineThickness = value
         }
 
         // start with current star color
@@ -64,13 +64,13 @@ class StarViewActivity : AppCompatActivity() {
         viewBinding.fillDirectionRadioGroup.setOnCheckedChangeListener { _, i ->
             when (i) {
                 R.id.ltrRadioButton -> viewBinding.starView.fillDirection =
-                    StarView.FillDirection.LeftToRight;
+                    StarView.FillDirection.LeftToRight
                 R.id.rtlRadioButton -> viewBinding.starView.fillDirection =
-                    StarView.FillDirection.RightToLeft;
+                    StarView.FillDirection.RightToLeft
                 R.id.ttbRadioButton -> viewBinding.starView.fillDirection =
-                    StarView.FillDirection.TopToBottom;
+                    StarView.FillDirection.TopToBottom
                 R.id.bttRadioButton -> viewBinding.starView.fillDirection =
-                    StarView.FillDirection.BottomToTop;
+                    StarView.FillDirection.BottomToTop
             }
         }
     }
