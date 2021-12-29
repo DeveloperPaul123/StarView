@@ -6,7 +6,8 @@
 
 <p align="center">
     <a href="https://github.com/DeveloperPaul123/StarView/stargazers"><img alt="Say Thanks" src="https://img.shields.io/badge/Say%20Thanks-👍-1EAEDB.svg"/></a>
-    <a href="https://img.shields.io/discord/652515194572111872"><img alt="Discord" src="https://img.shields.io/discord/652515194572111872"/></a><br>
+    <a href="https://img.shields.io/discord/652515194572111872"><img alt="Discord" src="https://img.shields.io/discord/652515194572111872"/></a>
+    <a href="https://jitpack.io/#DeveloperPaul123/StarView"><img alt="Jitpack" src="https://jitpack.io/v/DeveloperPaul123/StarView.svg"/></a></br>
 </p>
 
 <p align="center">
@@ -26,12 +27,13 @@
 
 ### Gradle
 
-Add the following to your root `build.gradle` if not there already.
+Add the following to your root `build.gradle`:
 
 ```gradle
 allprojects {
     repositories {
-        mavenCentral()
+        ...
+        maven { url 'https://jitpack.io' }
     }
 }
 ```
@@ -40,7 +42,7 @@ Then add the dependency to your **module's** `build.gradle` file:
 
 ```gradle
 dependencies {
-    implementation "io.github.developerpaul123:star-view:<version>"
+    implementation 'com.github.DeveloperPaul123:StarView:<version>'
 }
 ```
 
