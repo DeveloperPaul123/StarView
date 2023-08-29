@@ -194,11 +194,11 @@ class StarView @JvmOverloads constructor(
         computeStarPath()
     }
 
-    override fun draw(canvas: Canvas?) {
+    override fun draw(canvas: Canvas) {
         super.draw(canvas)
 
         // draw the background color
-        canvas?.drawPath(starPath, starBackgroundPaint)
+        canvas.drawPath(starPath, starBackgroundPaint)
 
         // draw the star (background)
         drawStarBitmapBackground(starPaint, starPath)
@@ -208,13 +208,13 @@ class StarView @JvmOverloads constructor(
         drawStarFill(starPaint, starPathBounds)
 
         // paint the bitmaps as masks
-        canvas?.drawBitmap(starBackgroundFillBitmap, 0f, 0f, paint)
+        canvas.drawBitmap(starBackgroundFillBitmap, 0f, 0f, paint)
         paint.xfermode = PorterDuffXfermode(PorterDuff.Mode.DST_IN)
-        canvas?.drawBitmap(starBitmap, 0f, 0f, paint)
+        canvas.drawBitmap(starBitmap, 0f, 0f, paint)
         paint.xfermode = null
 
         // draw the outline
-        canvas?.drawPath(starPath, starOutlinePaint)
+        canvas.drawPath(starPath, starOutlinePaint)
     }
 
     private fun getStarPath(): Path {
