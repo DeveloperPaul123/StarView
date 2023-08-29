@@ -87,3 +87,8 @@ lint/tmp/
 
 # Android Profiling
 *.hprof
+
+/local.properties
+.DS_Store
+/build
+/captures
