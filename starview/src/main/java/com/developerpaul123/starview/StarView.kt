@@ -5,10 +5,11 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import androidx.core.math.MathUtils
+import com.developerpaul123.starview.common.FillDirection
 import com.developerpaul123.starview.engine.StarEngine
 
 /**
- * Copyright Paul 2021
+ * Copyright Paul 2021-23
  * Part of the StarView project
  */
 class StarView @JvmOverloads constructor(
@@ -16,13 +17,6 @@ class StarView @JvmOverloads constructor(
     attributeSet: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attributeSet, defStyleAttr) {
-
-    enum class FillDirection {
-        LeftToRight,
-        RightToLeft,
-        TopToBottom,
-        BottomToTop
-    }
 
     /**
      * @brief Fill color of the star
